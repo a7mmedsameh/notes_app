@@ -1,0 +1,20 @@
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:project_12/views/widgets/custom_appbar.dart';
+
+class NotesViewBody extends StatelessWidget {
+  const NotesViewBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.r),
+      child: const Column(
+        children: [
+          CustomAppbar(),
+        ],
+      ),
+    );
+  }
+}
