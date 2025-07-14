@@ -8,12 +8,15 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('Notes', style: TextStyle(fontSize: 28.sp)),
-          const CustomSearchIcon(),
-        ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 16.r),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Notes', style: TextStyle(fontSize: 28.sp)),
+            const CustomSearchIcon(),
+          ],
+        ),
       ),
     );
   }

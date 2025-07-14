@@ -27,7 +27,7 @@ class CustomNoteItem extends StatelessWidget {
               child: Text(
                 'Build your career with Ahmed Sameh',
                 style: TextStyle(
-                  color: Colors.black.withOpacity(.5),
+                  color: Colors.black.withValues(alpha: .5),
                   fontSize: 16.sp,
                 ),
               ),
@@ -43,7 +43,7 @@ class CustomNoteItem extends StatelessWidget {
           ),
           Text(
             'May21, 2022',
-            style: TextStyle(color: Colors.black.withOpacity(.5)),
+            style: TextStyle(color: Colors.black.withValues(alpha: .5)),
           ),
         ],
       ),
