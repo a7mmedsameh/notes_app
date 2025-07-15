@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_12/views/widgets/custom_search_icon.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key});
-
+  const CustomAppbar({super.key, required this.icon, required this.headerText});
+final IconData icon;
+final String headerText;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -13,8 +14,8 @@ class CustomAppbar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Notes', style: TextStyle(fontSize: 28.sp)),
-            const CustomSearchIcon(),
+            Text(headerText, style: TextStyle(fontSize: 28.sp)),
+            CustomSearchIcon(icon:icon,),
           ],
         ),
       ),
