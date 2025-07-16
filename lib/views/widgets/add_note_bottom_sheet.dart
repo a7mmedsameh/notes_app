@@ -10,21 +10,20 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedPadding(
-      duration: const Duration(milliseconds: 300),
-      padding: EdgeInsets.only(
-        left: 16.r,
-        right: 16.r,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 16.r,
-        top: 16.r,
-      ),
-      curve: Curves.easeOut,
-      child: SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: AnimatedPadding(
+        duration: const Duration(milliseconds: 300),
+        padding: EdgeInsets.only(
+          left: 16.r,
+          right: 16.r,
+          bottom: MediaQuery.of(context).viewInsets.bottom + 16.r,
+          top: 16.r,
+        ),
+        curve: Curves.easeOut,
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
-            if (state is AddNoteFailure) {
-              
-            }
+            if (state is AddNoteFailure) {}
             if (state is AddNoteSuccess) {
               Navigator.pop(context);
             }
@@ -32,7 +31,7 @@ class AddNoteBottomSheet extends StatelessWidget {
           builder: (context, state) {
             return ModalProgressHUD(
               inAsyncCall: state is AddNoteLoading ? true : false,
-              child: const AddNoteForm(),
+              child: const SingleChildScrollView(child: AddNoteForm()),
             );
           },
         ),
