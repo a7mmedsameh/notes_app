@@ -26,7 +26,7 @@ class NotesApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MultiBlocProvider(
-          providers: [BlocProvider(create: (context) => NotesCubit())],
+          providers: [BlocProvider(create: (context) => AddNoteCubit())],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
