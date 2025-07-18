@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:project_12/constatns.dart';
-import 'package:project_12/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:project_12/models/note_model.dart';
 import 'package:project_12/simple_bloc_observer.dart';
 import 'package:project_12/views/edit_note_view.dart';
