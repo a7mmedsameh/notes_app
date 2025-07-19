@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:project_12/cubits/notes_cubit/notes_cubit_cubit.dart';
+import 'package:project_12/models/note_model.dart';
 import 'package:project_12/views/edit_note_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  const CustomNoteItem({super.key});
-
+  const CustomNoteItem({super.key, required this.notes});
+  final NoteModel notes;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.pushNamed(context, EditNoteView.id);
       },
       child: Container(
@@ -24,13 +27,13 @@ class CustomNoteItem extends StatelessWidget {
             ListTile(
               contentPadding: const EdgeInsets.all(0),
               title: Text(
-                'Flutter Tips',
+                notes.title,
                 style: TextStyle(color: Colors.black, fontSize: 26.sp),
               ),
               subtitle: Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.r),
                 child: Text(
-                  'Build your career with Ahmed Sameh',
+                  notes.subTitle,
                   style: TextStyle(
                     color: Colors.black.withValues(alpha: .5),
                     fontSize: 16.sp,
@@ -38,7 +41,10 @@ class CustomNoteItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  notes.delete();
+                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                },
                 icon: Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
@@ -47,7 +53,7 @@ class CustomNoteItem extends StatelessWidget {
               ),
             ),
             Text(
-              'May21, 2022',
+              notes.date,
               style: TextStyle(color: Colors.black.withValues(alpha: .5)),
             ),
           ],

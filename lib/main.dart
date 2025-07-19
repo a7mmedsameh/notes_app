@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:project_12/constatns.dart';
+import 'package:project_12/cubits/notes_cubit/notes_cubit_cubit.dart';
 import 'package:project_12/models/note_model.dart';
 import 'package:project_12/simple_bloc_observer.dart';
 import 'package:project_12/views/edit_note_view.dart';
@@ -27,17 +28,20 @@ class NotesApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            brightness: Brightness.dark,
-            fontFamily: 'Poppins',
+        return BlocProvider(
+      create: (context) => NotesCubit(),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              brightness: Brightness.dark,
+              fontFamily: 'Poppins',
+            ),
+            routes: {
+              EditNoteView.id: (context) => const EditNoteView(),
+              NotesView.id: (context) => const NotesView(),
+            },
+            initialRoute: NotesView.id,
           ),
-          routes: {
-            EditNoteView.id: (context) => const EditNoteView(),
-            NotesView.id: (context) => const NotesView(),
-          },
-          initialRoute: NotesView.id,
         );
       },
     );
